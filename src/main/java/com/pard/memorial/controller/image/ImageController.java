@@ -30,14 +30,18 @@ public class ImageController {
 
     @PostMapping(value = "/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseDto createImage(@RequestBody MultipartFile multipartFile, @RequestParam Long postingId){
+        if(multipartFile == null){
+            log.info("null!!!!!!!!!!!!!1");
+        }
         ResponseDto result = imageService.createImage(multipartFile, postingId);
         log.info("[Response createImage]");
         return result;
     }
 
     @GetMapping(value = "/image/{postingId}", produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<byte[]> getImage(@PathVariable Long postingId){
-        return imageService.getImage(postingId);
+    public ResponseEntity<byte[]> getImage(@PathVariable String postingId){
+        Long id = Long.parseLong(postingId);
+        return imageService.getImage(id);
     }
 
 

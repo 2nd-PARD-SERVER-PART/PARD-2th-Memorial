@@ -24,16 +24,16 @@ public class Posting {
     @Column(length = 15, nullable = false)
     private String title;
 
-    @Column(length = 300, nullable = false)
+    @Column(length = 200, nullable = false)
     private String content;
 
     @Column(length = 100, nullable = false)
     private String authorId;
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 100, nullable = false)
     private String startDate;
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 100, nullable = false)
     private String endDate;
 
     @CreationTimestamp

@@ -19,6 +19,7 @@ public class PostingResponseDto {
     private String title;
     private String content;
     private String authorId;
+    private String imageUrl;
     private String startDate;
     private String endDate;
     private Date uploadDate;
@@ -29,6 +30,7 @@ public class PostingResponseDto {
         this.title = posting.getTitle();
         this.content = posting.getContent();
         this.authorId = posting.getAuthorId();
+        this.imageUrl = "http://172.17.200.74:8080/api/v1/image/"+posting.getId();
         this.startDate = posting.getStartDate();
         this.endDate = posting.getEndDate();
         this.uploadDate = posting.getUploadDate();

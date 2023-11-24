@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -27,6 +29,13 @@ public class PostingController {
     public ResponseDto<PostingResponseDto> getPosting(@PathVariable Long id){
         ResponseDto<PostingResponseDto> result = postingService.getPosting(id);
         log.info("[Response getPosting]");
+        return result;
+    }
+
+    @GetMapping("/posting/all")
+    public ResponseDto<List<PostingResponseDto>> getAllPosting(){
+        ResponseDto<List<PostingResponseDto>> result = postingService.getAllPosting();
+        log.info("[Response getAllPosting]");
         return result;
     }
 

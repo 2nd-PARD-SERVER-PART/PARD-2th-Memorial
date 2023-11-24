@@ -9,7 +9,9 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +28,22 @@ public class PostingService {
             return ResponseDto.setFailed("DB Error");
         }
         return ResponseDto.setSuccess("Successfully create posting.", new PostingResponseDto(posting));
+    }
+
+    public ResponseDto<List<PostingResponseDto>> getAllPosting(){
+        List<Posting> postingList;
+        try{
+            postingList = postingRepository.findAll();
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseDto.setFailed("DB Error");
+        }
+
+        List<PostingResponseDto> result = postingList.stream()
+                .map(PostingResponseDto::new)
+                .collect(Collectors.toList());
+
+        return ResponseDto.setSuccess("Successfully get all posting.", result);
     }
 
     public ResponseDto<PostingResponseDto> getPosting(Long id){

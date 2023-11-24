@@ -75,7 +75,6 @@ public class ImageService {
     public ResponseEntity<byte[]> getImage(Long postingId){
         try{
             InputStream image = new FileInputStream(UserFileDirPath+"/"+postingId+"/image.jpeg");
-            System.out.println(UserFileDirPath+"/"+postingId+"/image.jpeg");
             byte[] imageByteArray = IOUtils.toByteArray(image);
             image.close();
             return new ResponseEntity<byte[]>(imageByteArray, HttpStatus.OK);
