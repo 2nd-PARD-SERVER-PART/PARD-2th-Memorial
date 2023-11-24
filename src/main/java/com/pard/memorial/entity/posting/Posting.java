@@ -24,7 +24,7 @@ public class Posting {
     @Column(length = 15, nullable = false)
     private String title;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 300, nullable = false)
     private String content;
 
     @Column(length = 100, nullable = false)
