@@ -21,7 +21,7 @@ public class SwaggerConfig {
         return new Info()
                 .title("Memorial")
                 .description("버르장례식 백엔드 api 명세서")
-                .version("0.1.0");
+                .version("1.0.0");
     }
 
 }

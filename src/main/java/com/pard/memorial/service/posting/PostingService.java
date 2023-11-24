@@ -84,9 +84,6 @@ public class PostingService {
         if(postingRequestDto.getStartDate() != null && !postingRequestDto.getStartDate().isEmpty()){
             posting.setStartDate(postingRequestDto.getStartDate());
         }
-        if(postingRequestDto.getEndDate() != null && !postingRequestDto.getEndDate().isEmpty()){
-            posting.setEndDate(postingRequestDto.getEndDate());
-        }
 
         return ResponseDto.setSuccess("Successfully update posting.", new PostingResponseDto(posting));
     }

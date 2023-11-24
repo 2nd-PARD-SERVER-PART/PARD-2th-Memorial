@@ -12,5 +12,4 @@ public class PostingRequestDto {
     private String content;
     private String authorId;
     private String startDate;
-    private String endDate;
 }

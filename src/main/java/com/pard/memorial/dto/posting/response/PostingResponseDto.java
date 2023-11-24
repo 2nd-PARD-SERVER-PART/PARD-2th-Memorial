@@ -21,7 +21,6 @@ public class PostingResponseDto {
     private String authorId;
     private String imageUrl;
     private String startDate;
-    private String endDate;
     private Date uploadDate;
     private List<CommentSimpleRequestDto> comment;
 
@@ -32,7 +31,6 @@ public class PostingResponseDto {
         this.authorId = posting.getAuthorId();
         this.imageUrl = "http://172.17.200.74:8080/api/v1/image/"+posting.getId();
         this.startDate = posting.getStartDate();
-        this.endDate = posting.getEndDate();
         this.uploadDate = posting.getUploadDate();
         if(posting.getComment() != null){
             this.comment = posting.getComment().stream()

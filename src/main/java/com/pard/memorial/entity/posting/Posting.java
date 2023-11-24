@@ -33,8 +33,6 @@ public class Posting {
     @Column(length = 100, nullable = false)
     private String startDate;
 
-    @Column(length = 100, nullable = false)
-    private String endDate;
 
     @CreationTimestamp
     private Date uploadDate;
@@ -48,6 +46,5 @@ public class Posting {
         this.content = postingRequestDto.getContent();
         this.authorId = postingRequestDto.getAuthorId();
         this.startDate = postingRequestDto.getStartDate();
-        this.endDate = postingRequestDto.getEndDate();
     }
 }
