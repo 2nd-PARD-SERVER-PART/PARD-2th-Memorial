@@ -4,12 +4,15 @@ import com.pard.memorial.dto.response.ResponseDto;
 import com.pard.memorial.entity.posting.Posting;
 import com.pard.memorial.repsitory.posting.PostingRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 @Service
 @RequiredArgsConstructor
@@ -50,7 +53,7 @@ public class ImageService {
             }
         }
 
-        String filePath = path+"/"+image.getOriginalFilename();
+        String filePath = path+"/image.jpeg";
 
         File saveFile = new File(filePath);
 
@@ -66,6 +69,22 @@ public class ImageService {
         }
 
         return ResponseDto.setSuccess("Successfully create image.", ApiUrl+"/api/v1/image/"+postingId);
+
+    }
+
+    public ResponseEntity<byte[]> getImage(Long postingId){
+        try{
+            InputStream image = new FileInputStream(UserFileDirPath+"/"+postingId+"/image.jpeg");
+            System.out.println(UserFileDirPath+"/"+postingId+"/image.jpeg");
+            byte[] imageByteArray = IOUtils.toByteArray(image);
+            image.close();
+            return new ResponseEntity<byte[]>(imageByteArray, HttpStatus.OK);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 }
